@@ -9,20 +9,23 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <script src="{{asset('js/toast.js')}}"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <link type="image/png" rel="icon" href="{{asset('storage/logo.png')}}">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
-
+<body class="font-sans antialiased bg-gray-100 relative dark:bg-gray-900">
 <div class="absolute top-0 bottom-0 right-0 left-0 -z-50 bg-gray-100 dark:bg-gray-900"></div>
-
-<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800 ">
+<x-toast.success></x-toast.success>
+<x-toast.danger></x-toast.danger>
+<nav class="sticky top-0 z-40 bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-800">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="/" class="flex items-center">
-            <img src="{{asset('storage/logo.png')}}" class="mr-3 h-6 sm:h-10" alt="Amaterasu Logo"/>
+            <img src="{{asset('storage/logo.png')}}" class="mr-3 h-16 sm:h-16" alt="Amaterasu Logo"/>
             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white
 @if(request()->routeIs('main')) border-b-2 dark:border-white border-black @endif">Amaterasu</span>
         </a>
@@ -30,18 +33,23 @@
             <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                 @guest
                     <li>
-                        <x-menu-item link="/order" :active="request()->routeIs('order')">Запись</x-menu-item>
+                        <x-menu-item link="/service" :active="request()->routeIs('service')">Услуги</x-menu-item>
                     </li>
                     <li>
-                        <x-menu-item link="/service" :active="request()->routeIs('service')">Услуги</x-menu-item>
+                        <x-menu-item link="/service" :active="request()->routeIs('service')">Наши сотрудники
+                        </x-menu-item>
                     </li>
                 @endguest
                 @can('user-list')
                     <li>
-                        <x-menu-item link="{{ route('users.index') }}" :active="request()->routeIs('users.index')">Пользователи</x-menu-item>
+                        <x-menu-item link="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                            Пользователи
+                        </x-menu-item>
                     </li>
                     <li>
-                        <x-menu-item link="{{ route('roles.index') }}" :active="request()->routeIs('roles.index')">Роли</x-menu-item>
+                        <x-menu-item link="{{ route('roles.index') }}" :active="request()->routeIs('roles.index')">
+                            Роли
+                        </x-menu-item>
                     </li>
                 @endcan
             </ul>
@@ -61,10 +69,10 @@
                     <div class="py-3 px-4">
                         <span class="block text-sm text-gray-900 dark:text-white">{{ Auth::user()->name }}</span>
                         <span class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">
-                        @foreach(Auth::user()->getRoleNames() as $role)
+                            @foreach(Auth::user()->getRoleNames() as $role)
                                 {{ucfirst($role).`\n`}}
                             @endforeach
-                    </span>
+                        </span>
                     </div>
                     <ul class="py-1" aria-labelledby="dropdown">
                         @can('admin_panel')
@@ -128,4 +136,13 @@
 </body>
 
 <script src="{{asset('js/toggle-theme.js')}}"></script>
+<script>
+    const phones = document.querySelectorAll('input[type="tel"]')
+    phones.forEach(function (el) {
+        const maskOptions = {
+            mask: '+{7}(000)000-00-00'
+        };
+        IMask(el, maskOptions);
+    })
+</script>
 </html>
