@@ -17,12 +17,15 @@
             <ul class="py-1" aria-labelledby="dropdownButton{{$user->id}}">
                 <li>
                     <a href="{{ route('users.show',$user->id) }}"
-                       class="block py-2 px-4 text-sm text-purple-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-purple-400 dark:hover:text-white">Просмотр</a>
+                       class="block py-2 px-4 text-sm text-amber-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-amber-400 dark:hover:text-white">Просмотр</a>
                 </li>
+                @can('user-edit')
                 <li>
                     <a href="{{ route('users.edit',$user->id) }}"
                        class="block py-2 px-4 text-sm text-blue-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-blue-400 dark:hover:text-white">Изменить</a>
                 </li>
+                @endcan
+                @can('user-delete')
                 <li>
                     {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
                     <button type="submit"
@@ -31,6 +34,7 @@
                     </button>
                     {!! Form::close() !!}
                 </li>
+                @endcan
             </ul>
         </div>
     </div>

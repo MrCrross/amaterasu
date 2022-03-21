@@ -13,4 +13,12 @@ class ServiceContraindication extends Model
         'contraindication_id',
         'service_id'
     ];
+
+    public function contraindication(){
+        return $this->belongsTo(Contraindication::class);
+    }
+    public function service(){
+        return $this->belongsTo(Service::class);
+    }
+
 }

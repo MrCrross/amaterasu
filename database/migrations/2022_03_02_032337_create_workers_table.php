@@ -19,7 +19,8 @@ class CreateWorkersTable extends Migration
             $table->string('first_name');
             $table->string('img');
             $table->date('birthday');
-            $table->bigInteger('user_id')->unsigned();
+            $table->text('description');
+            $table->bigInteger('user_id')->unsigned()->unique();
             $table->bigInteger('post_id')->unsigned();
 
             $table->foreign('user_id')

@@ -10,6 +10,6 @@
     }
 @endphp
 <div {{$attributes->merge(['class'=>"w-full flex flex-col sm:justify-center items-center p-10 ".$bg])}}>
-    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$head}}</h5>
+    <x-head>{{$head}}</x-head>
     {{$slot}}
 </div>

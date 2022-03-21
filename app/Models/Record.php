@@ -13,7 +13,6 @@ class Record extends Model
         'last_name',
         'first_name',
         'phone',
-        'status',
         'service_id'
     ];
 

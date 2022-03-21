@@ -17,8 +17,7 @@ class CreateRecordsTable extends Migration
             $table->id();
             $table->string('last_name');
             $table->string('first_name');
-            $table->string('phone', 16);
-            $table->boolean('status');
+            $table->string('phone', 16)->unique();
 
             $table->bigInteger('service_id')->unsigned();
 

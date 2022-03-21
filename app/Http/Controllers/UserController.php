@@ -12,6 +12,14 @@ use Illuminate\Support\Arr;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index','show','store']]);
+        $this->middleware('permission:user-create', ['only' => ['create','store']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +53,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'avatar'=>'nullable|image|mimes:jpg,png,jpeg,gif,svg',
-            'password' => 'required|same:confirm-password',
+            'password' => 'required|same:password_confirmation',
             'roles' => 'required'
         ]);
 
@@ -100,7 +108,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'avatar'=>'nullable|image|mimes:jpg,png,jpeg,gif,svg',
-            'password' => 'same:confirm-password',
+            'password' => 'same:password_confirmation',
             'roles' => 'required'
         ]);
 
@@ -140,4 +148,5 @@ class UserController extends Controller
                 ->with('success','Пользователь удален успешно');
         });
     }
+
 }

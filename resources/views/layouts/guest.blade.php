@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <script src="https://unpkg.com/imask"></script>
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <link type="image/png" rel="icon" href="{{asset('storage/logo.png')}}">
@@ -20,4 +21,15 @@
         </div>
     </body>
     <script src="{{asset('js/toggle-theme.js')}}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const phones = document.querySelectorAll('input[type="tel"]')
+            phones.forEach(function (el) {
+                const maskOptions = {
+                    mask: '+{7}(000)000-00-00'
+                };
+                IMask(el, maskOptions);
+            })
+        })
+    </script>
 </html>

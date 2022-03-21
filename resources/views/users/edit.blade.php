@@ -27,28 +27,29 @@
             </div>
             <!-- Image -->
             <div class="mt-4">
+                <x-label for="avatar" :value="__('Аватар')"></x-label>
                 <x-file id="avatar" name="avatar"></x-file>
             </div>
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Пароль')"/>
+                <x-label for="password" :value="__('Пароль')"></x-label>
 
                 <x-input id="password" class="block mt-1 w-full"
                          type="password"
                          name="password"
-                         autocomplete="new-password"/>
+                         autocomplete="new-password"></x-input>
             </div>
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Повторите пароль')"/>
+                <x-label for="password_confirmation" :value="__('Повторите пароль')"></x-label>
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                          type="password"
-                         name="password_confirmation"/>
+                         name="password_confirmation"></x-input>
             </div>
             <div class="mt-4">
-                <x-label for="roles" :value="__('Роли')"/>
+                <x-label for="roles" :value="__('Роли')"></x-label>
                 <x-select id="roles" name="roles[]" multiple>
                     @foreach($roles as $role)
                         <option value="{{$role}}" @if(array_search($role,$userRole)) {{'selected'}} @endif >{{$role}}</option>

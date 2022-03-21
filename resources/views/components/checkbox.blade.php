@@ -2,7 +2,7 @@
 <div {{$attributes->merge([
     'class'=>"flex items-center"
 ])}}>
-    <label class="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+    <label class="text-sm font-medium text-gray-900 dark:text-gray-300">
     <input type="checkbox"
            name="{{$name}}"
            value="{{$value}}"

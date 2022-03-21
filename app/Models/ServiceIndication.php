@@ -13,4 +13,11 @@ class ServiceIndication extends Model
         'indication_id',
         'service_id'
     ];
+
+    public function indication(){
+        return $this->belongsTo(Indication::class);
+    }
+    public function service(){
+        return $this->belongsTo(Service::class);
+    }
 }

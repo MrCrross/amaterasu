@@ -14,6 +14,7 @@ class Worker extends Model
         'first_name',
         'img',
         'birthday',
+        'description',
         'user_id',
         'post_id'
     ];

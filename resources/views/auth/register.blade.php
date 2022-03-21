@@ -9,11 +9,46 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors"></x-auth-validation-errors>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}" enctype='multipart/form-data'>
         @csrf
-
-        <!-- Name -->
             <div>
+            <x-label for="last_name" >Фамилия</x-label>
+            <x-input id="last_name" class="block mt-1 w-full"
+                     type="text"
+                     name="last_name"
+                     maxlength="255"
+                     placeholder="Фамилия"
+                     required></x-input>
+            </div>
+            <div class="mt-4">
+                <x-label for="first_name">Имя</x-label>
+                <x-input id="first_name" class="block mt-1 w-full"
+                         type="text"
+                         name="first_name"
+                         maxlength="255"
+                         placeholder="Имя"
+                         required></x-input>
+            </div>
+            <div class="mt-4">
+                <x-label for="phone">Номер телефона</x-label>
+                <x-input id="phone" class="block mt-1 w-full"
+                         type="tel"
+                         name="phone"
+                         placeholder="Номер телефона"
+                         required></x-input>
+            </div>
+            <div class="mt-4">
+                <x-label for="birthday" >Дата рождения</x-label>
+                <x-input id="birthday" class="block mt-1 w-full"
+                         type="date"
+                         name="birthday"
+                         max="{{date('Y-m-d')}}"
+                         pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+                         placeholder="Дата рождения"
+                         required></x-input>
+            </div>
+        <!-- Name -->
+            <div class="mt-4">
                 <x-label for="name" :value="__('Логин')"></x-label>
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
@@ -21,7 +56,7 @@
             </div>
             <!-- Image -->
             <div class="mt-4">
-                <x-file id="avatar" name="avatar"></x-file>
+                <x-file id="avatar" name="avatar" label="аватара"></x-file>
             </div>
             <!-- Password -->
             <div class="mt-4">

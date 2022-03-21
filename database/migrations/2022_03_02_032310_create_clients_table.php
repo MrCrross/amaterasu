@@ -19,7 +19,7 @@ class CreateClientsTable extends Migration
             $table->string('first_name');
             $table->string('phone', 16)->unique();
             $table->date('birthday')->nullable();
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned()->unique();
 
             $table->foreign('user_id')
                 ->references('id')

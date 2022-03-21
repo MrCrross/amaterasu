@@ -13,7 +13,8 @@ class Order extends Model
         'seance',
         'worker_id',
         'client_id',
-        'service_id'
+        'service_id',
+        'status'
     ];
 
     public function service()

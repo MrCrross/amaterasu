@@ -16,6 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->dateTime('seance');
+            $table->boolean('status');
             $table->bigInteger('client_id')->unsigned();
             $table->bigInteger('service_id')->unsigned();
             $table->bigInteger('worker_id')->unsigned();

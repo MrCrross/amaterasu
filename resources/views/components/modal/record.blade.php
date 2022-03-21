@@ -1,6 +1,6 @@
 <x-modal.form id="record-modal">
     <x-slot name="header">Оставить заявку на <span class="service_name"></span></x-slot>
-    {!! Form::open(['route' => 'record.create','method'=>'POST']) !!}
+    {!! Form::open(['route' => 'records.store','method'=>'POST']) !!}
     <div>
         <x-label for="last_name" :value="__('Ваша фамилия')"></x-label>
         <x-input id="last_name" class="block mt-1 w-full"
@@ -13,7 +13,7 @@
         <x-label for="first_name" :value="__('Ваше имя')"></x-label>
         <x-input id="first_name" placeholder="Имя*" class="block mt-1 w-full" type="text" name="first_name"
                  :value="old('first_name')" required></x-input>
-        <x-input type="text" name="service_id" required hidden></x-input>
+        <input type="text" name="service_id" required hidden>
     </div>
     <div class="mt-4">
         <x-label for="phone" :value="__('Телефон')"></x-label>
@@ -37,28 +37,5 @@
         const service_name = modal.querySelector('span.service_name')
         service_id.value = localStorage.service_id
         service_name.innerHTML = localStorage.service_name
-
-        const submit = modal.querySelector('form')
-        submit.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const formData = new FormData(submit)
-            console.log(formData)
-            fetch('{{route('record.create')}}', {
-                method: "POST",
-                credentials: "same-origin",
-                body: formData
-            }).then(res => res.json())
-                .then(res => {
-                    switch (res.status) {
-                        case 'success':
-                            toastMessage('toast-success', res.message)
-                            break;
-                        case 'error':
-                            toastMessage('toast-danger', res.message)
-                            break;
-                    }
-                    toggleModal('record-modal')
-                })
-        })
     })
 </script>

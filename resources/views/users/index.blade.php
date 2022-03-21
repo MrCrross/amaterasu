@@ -35,7 +35,7 @@
                             @endforeach
                         @endif
                     </x-table.data>
-                    <x-table.data class="w-20">
+                    <x-table.data>
                         <x-a.info href="{{ route('users.show',$user->id) }}" class="mr-2">Просмотр</x-a.info>
                         @can('user-edit')
                             <x-a.primary href="{{ route('users.edit',$user->id) }}" class="mr-2">Редактировать
