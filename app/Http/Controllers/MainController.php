@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Account;
 use App\Models\Service;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 class MainController extends Controller
 {

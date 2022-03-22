@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-
+    {!! Form::open(['route' => 'mail','method'=>'POST']) !!}
+    <x-btn.success type="submit">
+        Отправить письмо
+    </x-btn.success>
+    {!! Form::close() !!}
     <x-carousel.service :services="$services"></x-carousel.service>
     <x-offer :services="$offers"></x-offer>
     @guest
@@ -23,6 +27,10 @@
                 <x-label for="first_name" :value="__('Ваше имя')"></x-label>
                 <x-input id="first_name" placeholder="Имя*" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required></x-input>
                 <input type="text" name="service_id" value="1" required hidden>
+            </div>
+            <div class="mt-4">
+                <x-label for="email" :value="__('Почта')"></x-label>
+                <x-input id="email" placeholder="Почта*" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required></x-input>
             </div>
             <div class="mt-4">
                 <x-label for="phone" :value="__('Телефон')"></x-label>

@@ -41,6 +41,7 @@ class RegisteredUserController extends Controller
             'first_name'=>'required|string|max:255',
             'phone'=>'required|string|max:16|min:16',
             'birthday'=>'required|date',
+            'email'=>'required|email',
             'name' => ['required', 'string', 'max:255'],
             'avatar'=>'nullable|image|mimes:jpg,png,jpeg,gif,svg',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -59,6 +60,7 @@ class RegisteredUserController extends Controller
             'first_name'=>$request->first_name,
             'phone'=>$request->phone,
             'birthday'=>$request->birthday,
+            'email' => $request->email,
             'user_id'=>$user->id
         ]);
         Auth::login($user);

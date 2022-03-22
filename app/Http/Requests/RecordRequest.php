@@ -26,6 +26,7 @@ class RecordRequest extends FormRequest
         return [
             'first_name'=>'required|string|max:255',
             'last_name'=>'required|string|max:255',
+            'email'=>'required|email',
             'phone'=>'required|string|max:16|min:16',
             'service_id'=>'required'
         ];

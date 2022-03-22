@@ -67,6 +67,7 @@ class UserSeeder extends Seeder
                 'last_name' => 'Иванова',
                 'first_name' => 'Юлия',
                 'phone' => '+7(964)659-29-99',
+                'email' => 'mrcrross38@vk.com',
                 'birthday' => '2000-05-03',
                 'user_id' => 3
             ],
@@ -113,7 +114,7 @@ class UserSeeder extends Seeder
             ]);
             if ($role->name === 'Клиент') $role->syncPermissions(['order-client-list']);
             if ($role->name === "Врач") $role->syncPermissions(['order-worker-list']);
-            if ($role->name === "Приемная") $role->syncPermissions(['record-list','record-update']);
+            if ($role->name === "Приемная") $role->syncPermissions(['record-list','record-update','order-list']);
         }
 
         foreach ($users as $user) {
@@ -129,6 +130,7 @@ class UserSeeder extends Seeder
                 'last_name' => $client['last_name'],
                 'first_name' => $client['first_name'],
                 'phone' => $client['phone'],
+                'email' => $client['email'],
                 'birthday' => $client['birthday'],
                 'user_id' => $client['user_id'],
             ]);

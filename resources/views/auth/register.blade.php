@@ -30,6 +30,15 @@
                          required></x-input>
             </div>
             <div class="mt-4">
+                <x-label for="email">Почта</x-label>
+                <x-input id="email" class="block mt-1 w-full"
+                         type="email"
+                         name="email"
+                         maxlength="255"
+                         placeholder="Почта"
+                         required></x-input>
+            </div>
+            <div class="mt-4">
                 <x-label for="phone">Номер телефона</x-label>
                 <x-input id="phone" class="block mt-1 w-full"
                          type="tel"
@@ -70,11 +79,11 @@
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Повторите пароль')"/>
+                <x-label for="password_confirmation" :value="__('Повторите пароль')"></x-label>
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                          type="password"
-                         name="password_confirmation" required/>
+                         name="password_confirmation" required></x-input>
             </div>
 
 

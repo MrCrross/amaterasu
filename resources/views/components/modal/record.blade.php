@@ -16,6 +16,10 @@
         <input type="text" name="service_id" required hidden>
     </div>
     <div class="mt-4">
+        <x-label for="email" :value="__('Почта')"></x-label>
+        <x-input id="email" placeholder="Почта*" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required></x-input>
+    </div>
+    <div class="mt-4">
         <x-label for="phone" :value="__('Телефон')"></x-label>
         <x-input id="phone" class="block mt-1 w-full"
                  placeholder="Телефон*"
