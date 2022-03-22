@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    {!! Form::open(['route' => 'mail','method'=>'POST']) !!}
-    <x-btn.success type="submit">
-        Отправить письмо
-    </x-btn.success>
-    {!! Form::close() !!}
     <x-carousel.service :services="$services"></x-carousel.service>
     <x-offer :services="$offers"></x-offer>
     @guest
