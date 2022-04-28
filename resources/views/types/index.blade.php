@@ -23,10 +23,10 @@
                 <x-table.row>
                     <x-table.data>{{++$key}}</x-table.data>
                     <x-table.data>{{ $type->name }}</x-table.data>
-                    <x-table.data class="w-20">
-                        <x-a.info href="{{ route('types.show',$type->id) }}" class="mr-2">Просмотр</x-a.info>
+                    <x-table.data class="flex flex-row items-center w-20">
+                        <x-a.info href="{{ route('types.show',$type->id) }}" class="mr-2 mb-3">Просмотр</x-a.info>
                         @can('type-edit')
-                            <x-a.primary href="{{ route('types.edit',$type->id) }}" class="mr-2">Редактировать
+                            <x-a.primary href="{{ route('types.edit',$type->id) }}" class="mr-2 mb-3">Редактировать
                             </x-a.primary>
                         @endcan
                         @can('type-delete')

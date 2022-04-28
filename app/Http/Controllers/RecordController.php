@@ -98,10 +98,11 @@ class RecordController extends Controller
             ]);
             $data = Record::where('id', $id)->first();
             $client = Client::where('phone', $data->phone)->pluck('id')->first();
+            $password = $this->gen_password();
             if (is_null($client)) {
                 $user = User::create([
                     'name' => 'client' . $id,
-                    'password' => Hash::make('client' . $id),
+                    'password' => Hash::make($password),
                     'avatar' => 'storage/user.png'
                 ]);
                 $user->assignRole(Role::where('name', 'Клиент')->pluck('id')->first());
@@ -122,7 +123,7 @@ class RecordController extends Controller
                 $mailData = (object)[
                     'email'=>$data->email,
                     'login'=>'client' . $id,
-                    'password'=>$this->gen_password(),
+                    'password'=>$password,
                     'seance'=>$order->seance,
                 ];
                 Mail::to($data->email)->send(new Account($mailData));

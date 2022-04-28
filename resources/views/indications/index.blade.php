@@ -23,11 +23,10 @@
                 <x-table.row>
                     <x-table.data>{{++$key}}</x-table.data>
                     <x-table.data>{{ $indication->name }}</x-table.data>
-                    <x-table.data class="w-20">
-                        <x-a.info href="{{ route('indications.show',$indication->id) }}" class="mr-2">Просмотр</x-a.info>
+                    <x-table.data class="flex flex-row items-center w-20">
+                        <x-a.info href="{{ route('indications.show',$indication->id) }}" class="mr-2 mb-3">Просмотр</x-a.info>
                         @can('indication-edit')
-                            <x-a.primary href="{{ route('indications.edit',$indication->id) }}" class="mr-2">Редактировать
-                            </x-a.primary>
+                            <x-a.primary href="{{ route('indications.edit',$indication->id) }}" class="mr-2 mb-3">Редактировать</x-a.primary>
                         @endcan
                         @can('indication-delete')
                             {!! Form::open(['method' => 'DELETE','route' => ['indications.destroy', $indication->id],'style'=>'display:inline']) !!}
