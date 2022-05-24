@@ -24,7 +24,7 @@
                 <x-table.row>
                     <x-table.data>{{++$key}}</x-table.data>
                     <x-table.data>{{ $role->name }}</x-table.data>
-                    <x-table.data class="w-20">
+                    <x-table.data>
                         <x-a.info href="{{ route('roles.show',$role->id) }}" class="mr-2">Просмотр</x-a.info>
                         @can('role-edit')
                             <x-a.primary href="{{ route('roles.edit',$role->id) }}" class="mr-2">Редактировать

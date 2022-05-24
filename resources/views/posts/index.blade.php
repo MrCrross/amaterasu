@@ -23,7 +23,7 @@
                 <x-table.row>
                     <x-table.data>{{++$key}}</x-table.data>
                     <x-table.data>{{ $post->name }}</x-table.data>
-                    <x-table.data class="w-20">
+                    <x-table.data>
                         <x-a.info href="{{ route('posts.show',$post->id) }}" class="mr-2">Просмотр</x-a.info>
                         @can('post-edit')
                             <x-a.primary href="{{ route('posts.edit',$post->id) }}" class="mr-2">Редактировать

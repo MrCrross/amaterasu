@@ -33,7 +33,7 @@
         <a href="/" class="flex items-center">
             <img src="{{asset('storage/logo.png')}}" class="mr-3 h-16 sm:h-16" alt="Amaterasu Logo"/>
             <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white
-@if(request()->routeIs('main')) border-b-2 dark:border-white border-black @endif">Amaterasu</span>
+@if(request()->routeIs('main')) border-b-2 dark:border-white border-black @endif">{{ config('app.name', 'Laravel') }}</span>
         </a>
         <div class="flex items-center md:order-2">
             <x-theme class="mr-2"></x-theme>

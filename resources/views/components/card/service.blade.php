@@ -23,7 +23,7 @@
             @if(request()->routeIs('main'))
                 @guest
                     <x-btn.success type="button" data-modal-toggle="record-modal"
-                                   onclick="localStorage.service_id = {{$service->id}};localStorage.service_name='{{$service->name}}';">
+                                   onclick="localStorage.setItem('service_id',{{$service->id}});localStorage.setItem('service_name','{{$service->name}}'); change();">
                         Оставить заявку
                     </x-btn.success>
                 @endguest

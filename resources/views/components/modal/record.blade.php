@@ -36,10 +36,13 @@
 </x-modal.form>
 <script>
     document.addEventListener('DOMContentLoaded',function () {
+        change()
+    })
+    function change(){
         const modal = document.getElementById('record-modal');
         const service_id = modal.querySelector('input[name="service_id"]')
         const service_name = modal.querySelector('span.service_name')
-        service_id.value = localStorage.service_id
-        service_name.innerHTML = localStorage.service_name
-    })
+        service_id.value = localStorage.getItem('service_id')
+        service_name.innerHTML = localStorage.getItem('service_name')
+    }
 </script>

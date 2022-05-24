@@ -46,10 +46,15 @@ class RegisteredUserController extends Controller
             'avatar'=>'nullable|image|mimes:jpg,png,jpeg,gif,svg',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-        $url = Storage::disk('public')->put('users', $request->avatar);
+        $avatar = '/storage/user.png';
+        if($request->avatar !==null){
+            $url = Storage::disk('public')->put('users', $request->avatar);
+            $avatar = 'storage/'.$url;
+        }
+
         $user = User::create([
             'name' => $request->name,
-            'avatar'=>'storage/'.$url,
+            'avatar'=>$avatar,
             'password' => Hash::make($request->password),
         ]);
 
