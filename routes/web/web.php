@@ -3,6 +3,8 @@
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Models\Order;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,13 +25,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UserController::class);
 });
 
-require __DIR__ . '/auth.php';
-require __DIR__ . '/record.php';
-require __DIR__ . '/service.php';
-require __DIR__ . '/type.php';
-require __DIR__ . '/post.php';
-require __DIR__ . '/indication.php';
-require __DIR__ . '/contraindication.php';
-require __DIR__ . '/worker.php';
-require __DIR__ . '/order.php';
-require __DIR__ . '/lk.php';
+require_once __DIR__ . '/auth.php';
+require_once __DIR__ . '/record.php';
+require_once __DIR__ . '/service.php';
+require_once __DIR__ . '/type.php';
+require_once __DIR__ . '/post.php';
+require_once __DIR__ . '/indication.php';
+require_once __DIR__ . '/contraindication.php';
+require_once __DIR__ . '/worker.php';
+require_once __DIR__ . '/order.php';
+require_once __DIR__ . '/lk.php';
+require_once __DIR__ . '/static.php';

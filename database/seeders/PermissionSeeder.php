@@ -51,6 +51,7 @@ class PermissionSeeder extends Seeder
                      'contraindication-create',
                      'contraindication-edit',
                      'contraindication-delete',
+                     'static-print'
                  ] as $permission) {
             Permission::create(['name' => $permission]);
         }

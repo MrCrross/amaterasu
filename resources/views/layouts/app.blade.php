@@ -183,6 +183,13 @@
                             </x-menu-item>
                         </li>
                     @endcan
+                    @can('static-print')
+                        <li>
+                            <x-menu-item link="{{ route('static.index') }}" :active="request()->routeIs('static.index')">
+                                Статистика
+                            </x-menu-item>
+                        </li>
+                    @endcan
                 @endauth
             </ul>
         </div>
